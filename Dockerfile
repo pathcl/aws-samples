@@ -5,6 +5,7 @@ FROM golang:1.21.5 AS build
 RUN git clone https://github.com/pathcl/aws-samples aws-samples && \
   cd aws-samples && \
   git rev-parse HEAD && \
+  ls -ltr && \
   sleep 10 && \
   CGO_ENABLED=1 go build -ldflags "-linkmode external -extldflags '-static'" -o /go/bin/test-iam
 
